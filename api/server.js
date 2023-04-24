@@ -24,7 +24,7 @@ app.get("/user-create", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello 222Node.js jahahaha app \n");
+  res.send("Hello evebody .js app \n");
 });
 
 app.listen(PORT, function () {
