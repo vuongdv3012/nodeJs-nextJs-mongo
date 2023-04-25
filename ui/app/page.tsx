@@ -1,14 +1,19 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import axios from 'axios';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default async  function Home() {
+  const data = await getData();
+  console.log(data);
+  
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
+          Get started 456 editing&nbsp;
           <code className="font-mono font-bold">app/page.tsx</code>
         </p>
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
@@ -18,7 +23,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
+            By{" "}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -50,7 +55,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
+            Docs{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -67,7 +72,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
+            Learn{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -84,7 +89,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
+            Templates{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -101,7 +106,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
+            Deploy{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -112,5 +117,46 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
+}
+
+async function getData() {
+  //const res = await fetch('http://localhost:8080/user-create');
+ // const res = await fetch('http://127.0.0.1:8080');
+  // const res = await fetch('http://nodejs:8080/users');
+  //const res = await fetch('http://nodejs:8080/users');
+  return axios.get('http://nodejs:8080/users').then(res => {
+    console.log('534534', res.data);
+    return res.data
+  })
+  // console.log('1234565', res)
+
+  // const response = await fetch("http://nodejs:8080", {
+  //   method: "GET", // *GET, POST, PUT, DELETE, etc.
+  //   mode: "no-cors", // no-cors, *cors, same-origin
+  //   cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+  //   credentials: "same-origin", // include, *same-origin, omit
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     // 'Content-Type': 'application/x-www-form-urlencoded',
+  //   },
+  //   redirect: "follow", // manual, *follow, error
+  //   referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+  //   //body: JSON.stringify(data), // body data type must match "Content-Type" header
+  // });
+
+  // console.log('response', response)
+
+//   axios.get("http://localhost:8080/api/getData")
+// .then(function (response) {
+
+// }).catch(function (error) {
+// console.log(error)
+// });
+
+  // if (!res.ok) {
+  //   // This will activate the closest `error.js` Error Boundary
+  //   throw new Error('Failed to fetch data');
+  // }
+
 }
