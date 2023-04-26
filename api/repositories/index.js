@@ -1,5 +1,3 @@
-import userRepo from './user.js';
+import userRepo from './user.js'
 
-export {
-    userRepo
-}
+export { userRepo }
